@@ -1,9 +1,7 @@
 $.prototype.center = function (ratio) {
     var parent = $(this).parent();
     var W = 0,
-        H = 0,
-        paddingLeft = 0,
-        paddingTop = 0;
+        H = 0;
 
     if (parent.is("body")) {
         $("body").css("margin", 0);
@@ -45,11 +43,21 @@ function popup(parent, child) {
     child.appendTo(overlay);
 
 
-
     return overlay;
 }
 
 
+var ticTacToe = {
+    xo: ['<i class="fa fa-close"></i>', '<i class="fa fa-circle-o"></i>'],
+    index: 0,
+    turn: function () {
+        return this.xo[(this.index++) % 2];
+    }
+};
+
+$(".cell").click(function () {
+    $(this).html(ticTacToe.turn());
+});
 
 
 $(function () {
@@ -68,7 +76,7 @@ $(function () {
 });
 
 $(window).resize(function () {
-    var app = $(".chessboard").show();
+    var app = $(".chessboard").css("display", "block");
     var cell = $(".cell");
 
 
@@ -77,6 +85,7 @@ $(window).resize(function () {
     } else {
         app.center(0.6);
     }
+
 
     cell.css({
         "line-height": cell.height() + 'px',
