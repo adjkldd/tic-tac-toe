@@ -1,0 +1,27 @@
+doctype
+html
+    head
+        title Tic Tac Toe
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css")
+        link(rel="stylesheet" href="app.css")
+    body
+        .chessboard
+            - for (var i = 0; i < 3; ++i)
+                .row
+                    - for (var j = 0; j < 3; ++j)
+                        .cell(data-pos=i.toString() + ',' + j.toString())
+        .settings
+            p!= 'Choose <i class="fa fa-close fa-4x"></i> or <i class="fa fa-circle-o fa-4x"></i>'
+            button#x
+                i.fa.fa-close.fa-4x
+            button#o
+                i.fa.fa-circle-o.fa-4x
+
+        .game-over
+            p.result
+            button.restart RESTART
+
+    script(src="jquery-1.12.1.js")
+    script(src="app.js")
